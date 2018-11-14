@@ -89,10 +89,12 @@ class SignUp extends React.Component {
             </TouchableOpacity>
 
             <TouchableOpacity onPress={ this.pressSignSignIn }>
-              <Text style={styles.signinText}>
-                Already Member? Sign In {' '}
+              <View style={styles.signInButton}>
+                <Text style={styles.signinText}>
+                  Already Member? Sign In {' '}
+                </Text>
                 <Image style={styles.signUpImage} source={require('../../../assets/icons/signin-green.png')}></Image>
-              </Text>
+              </View>
             </TouchableOpacity>
           </View>
         </View>
@@ -108,7 +110,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: 'rgba(255,255,255, 0.2)',
+    backgroundColor: 'rgba(255,255,255, 0.5)',
   },
   homeImage: {
     width: '100%',
@@ -145,11 +147,16 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: normalize(16),
   },
+  signInButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    margin: 30,
+  },
   signinText: {
     fontSize: normalize(16),
     color: '#42c000',
     textAlign: 'center',
-    padding: 30,
   },
   signUpImage: {
     width: normalize(16),

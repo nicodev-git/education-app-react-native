@@ -43,11 +43,13 @@ class WelcomeNew extends React.Component {
         <View style={styles.container}>
           <Text style={styles.headerText}>Welcome</Text>
           <Text style={styles.contentText}>Your registration is succeed. You can look for and study the courses you want.</Text>
-          <TouchableOpacity style={styles.homeButton} onPress={ this.pressHome }>
-            <Text style={styles.homeText}>
-              Go to Home{' '}
+          <TouchableOpacity onPress={ this.pressHome }>
+            <View style={styles.homeButton}>
+              <Text style={styles.homeText}>
+                Go to Home{' '}
+              </Text>
               <Image style={styles.nextImage} source={require('../../../assets/icons/next-green.png')}></Image>
-            </Text>
+            </View>
           </TouchableOpacity>
         </View>
       </ImageBackground>
@@ -62,7 +64,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: 'rgba(255,255,255, 0.2)',
+    backgroundColor: 'rgba(255,255,255, 0.5)',
   },
   homeImage: {
     width: '100%',
@@ -80,12 +82,15 @@ const styles = StyleSheet.create({
     padding: 15
   },
   homeButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    margin: 30,
   },
   homeText: {
     fontSize: normalize(20),
     color: '#42c000',
     textAlign: 'center',
-    padding: 30,
   },
   nextImage: {
     width: normalize(20),

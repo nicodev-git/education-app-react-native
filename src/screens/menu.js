@@ -156,7 +156,7 @@ const styles = StyleSheet.create({
   logoImage: {
     width: normalize(100),
     height: normalize(100),
-    borderRadius: normalize(60),
+    borderRadius: normalize(50),
     margin: 15,
   },
   headerInfoSection: {

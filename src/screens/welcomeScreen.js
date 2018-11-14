@@ -46,11 +46,14 @@ class WelcomeScreen extends React.Component {
         <View style={styles.container}>
           <Image style={styles.headerImage} source={require('../../assets/images/logo_green.png')}></Image>
           <Text style={styles.contentText}>This is a new kind of Education App. You can look for your online courses and learn whatever you want. Enjoy your life yourself.</Text>
-          <TouchableOpacity style={styles.signInButton} onPress={ this.pressSignIn }>
-            <Text style={styles.signinText}>
-              Sign In{' '}
+          <TouchableOpacity onPress={ this.pressSignIn }>
+            <View style={styles.signInButton}>
+              <Text style={styles.signinText}>
+                Sign In{' '}
+              </Text>
               <Image style={styles.signInImage} source={require('../../assets/icons/signin-green.png')}></Image>
-            </Text>
+            </View>
+            
           </TouchableOpacity>
         </View>
       </ImageBackground>
@@ -65,7 +68,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: 'rgba(255,255,255, 0.2)',
+    backgroundColor: 'rgba(255,255,255, 0.5)',
   },
   homeImage: {
     width: '100%',
@@ -83,12 +86,15 @@ const styles = StyleSheet.create({
     padding: 15
   },
   signInButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    margin: 30,
   },
   signinText: {
     fontSize: normalize(20),
     color: '#42c000',
     textAlign: 'center',
-    padding: 30,
   },
   signInImage: {
     width: normalize(20),

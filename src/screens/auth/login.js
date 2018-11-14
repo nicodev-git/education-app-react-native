@@ -103,10 +103,12 @@ class Login extends React.Component {
             </TouchableOpacity>
 
             <TouchableOpacity onPress={ this.pressSignSignUp }>
-              <Text style={styles.signupText}>
-                Not a Member? Sign Up {' '}
+              <View style={styles.signUpButton}>
+                <Text style={styles.signupText}>
+                  Not a Member? Sign Up {' '}
+                </Text>
                 <Image style={styles.signUpImage} source={require('../../../assets/icons/signup-green.png')}></Image>
-              </Text>
+              </View>
             </TouchableOpacity>
           </View>
         </View>
@@ -122,7 +124,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: 'rgba(255,255,255, 0.2)',
+    backgroundColor: 'rgba(255,255,255, 0.5)',
   },
   homeImage: {
     width: '100%',
@@ -159,11 +161,16 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: normalize(16),
   },
+  signUpButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    margin: 30,
+  },
   signupText: {
     fontSize: normalize(16),
     color: '#42c000',
     textAlign: 'center',
-    padding: 30,
   },
   signUpImage: {
     width: normalize(16),
