@@ -1,32 +1,32 @@
-import React from 'react';
-import { StyleSheet, Text, View, ImageBackground, TextInput, Image, TouchableOpacity, Dimensions, TouchableWithoutFeedback, Keyboard, ScrollView } from 'react-native';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
+import React from 'react'
+import { StyleSheet, Text, View, ImageBackground, TextInput, Image, TouchableOpacity, Dimensions, TouchableWithoutFeedback, Keyboard, ScrollView } from 'react-native'
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
 
-import normalize from '../../helpers/sizeHelper';
+import normalize from '../../helpers/sizeHelper'
 
-import Footer from '../footer';
-import Header from '../header';
+import Footer from '../footer'
+import Header from '../header'
 
-import * as commonActions from '../../actions/common';
-import * as userActions from '../../actions/user';
+import * as commonActions from '../../actions/common'
+import * as userActions from '../../actions/user'
 
-const { height, width } = Dimensions.get('window');
+const { height, width } = Dimensions.get('window')
 
 
 const mapDispatchToProps = (dispatch) => {
-	return ({
+  return ({
     userActions: bindActionCreators({...userActions}, dispatch),
     commonActions: bindActionCreators({...commonActions}, dispatch)
-	});
+  })
 }
 
 const mapStateToProps = (state) => {
-	return ({
+  return ({
     authedUser: state.user.authedUser,
     loading: state.common.loading,
     label: state.common.label,
-	});
+  })
 }
 
 
@@ -34,7 +34,7 @@ const mapStateToProps = (state) => {
 class Grade extends React.Component {
 
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       currentGrade: {
         id: 1,
@@ -169,40 +169,40 @@ class Grade extends React.Component {
       ]
     }
 
-    this.createRateView = this.createRateView.bind(this);
-    this.goToVideo = this.goToVideo.bind(this);
-    this.createRateViewGreen = this.createRateViewGreen.bind(this);
-    this.onPressSubscribe = this.onPressSubscribe.bind(this);
+    this.createRateView = this.createRateView.bind(this)
+    this.goToVideo = this.goToVideo.bind(this)
+    this.createRateViewGreen = this.createRateViewGreen.bind(this)
+    this.onPressSubscribe = this.onPressSubscribe.bind(this)
   }
 
   goToVideo() {
-    this.props.navigation.navigate('Video');
+    this.props.navigation.navigate('Video')
   }
 
   onPressSubscribe() {
-    this.props.navigation.navigate('GradeSelection');
+    this.props.navigation.navigate('GradeSelection')
   }
 
   createRateView(rate) {
     let data = []
     for (let i=0; i< rate; i+= 1) {
-      data.push(<Image key={`rate_star${i}`} style={styles.ratingImage} source={require('../../../assets/icons/star-fill-y.png')}></Image>);
+      data.push(<Image key={`rate_star${i}`} style={styles.ratingImage} source={require('../../../assets/icons/star-fill-y.png')}></Image>)
     }
     for (let i=0; i< 5 - rate; i+= 1) {
-      data.push(<Image key={`rate_star_n${i}`} style={styles.ratingImage} source={require('../../../assets/icons/star-outline-y.png')}></Image>);
+      data.push(<Image key={`rate_star_n${i}`} style={styles.ratingImage} source={require('../../../assets/icons/star-outline-y.png')}></Image>)
     }
-    return data;
+    return data
   }
 
   createRateViewGreen(rate) {
     let data = []
     for (let i=0; i< rate; i+= 1) {
-      data.push(<Image key={`rate_star${i}`} style={styles.ratingImageGreen} source={require('../../../assets/icons/star-fill.png')}></Image>);
+      data.push(<Image key={`rate_star${i}`} style={styles.ratingImageGreen} source={require('../../../assets/icons/star-fill.png')}></Image>)
     }
     for (let i=0; i< 5 - rate; i+= 1) {
-      data.push(<Image key={`rate_star_n${i}`} style={styles.ratingImageGreen} source={require('../../../assets/icons/star-outline.png')}></Image>);
+      data.push(<Image key={`rate_star_n${i}`} style={styles.ratingImageGreen} source={require('../../../assets/icons/star-outline.png')}></Image>)
     }
-    return data;
+    return data
   }
 
 
@@ -345,7 +345,7 @@ class Grade extends React.Component {
 
       </ImageBackground>
 
-    );
+    )
 
   }
 
@@ -592,8 +592,8 @@ const styles = StyleSheet.create({
     left: normalize(30)
   }
 
-});
+})
 
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(Grade);
+export default connect(mapStateToProps, mapDispatchToProps)(Grade)

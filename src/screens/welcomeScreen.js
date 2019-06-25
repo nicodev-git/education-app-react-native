@@ -1,42 +1,42 @@
-import React from 'react';
-import { StyleSheet, Text, View, ImageBackground, TextInput, Image, TouchableOpacity, Dimensions, TouchableWithoutFeedback, Keyboard } from 'react-native';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-import normalize from '../helpers/sizeHelper';
+import React from 'react'
+import { StyleSheet, Text, View, ImageBackground, TextInput, Image, TouchableOpacity, Dimensions, TouchableWithoutFeedback, Keyboard } from 'react-native'
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
+import normalize from '../helpers/sizeHelper'
 
-import * as commonActions from '../actions/common';
-import * as userActions from '../actions/user';
+import * as commonActions from '../actions/common'
+import * as userActions from '../actions/user'
 
-const { height, width } = Dimensions.get('window');
+const { height, width } = Dimensions.get('window')
 
 
 const mapDispatchToProps = (dispatch) => {
-	return ({
+  return ({
     userActions: bindActionCreators({...userActions}, dispatch),
     commonActions: bindActionCreators({...commonActions}, dispatch)
-	});
+  })
 }
 
 const mapStateToProps = (state) => {
-	return ({
+  return ({
     loading: state.common.loading,
     label: state.common.label,
-	});
+  })
 }
 
 class WelcomeScreen extends React.Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
     }
-    this.pressSignIn = this.pressSignIn.bind(this);
+    this.pressSignIn = this.pressSignIn.bind(this)
   }
 
   componentDidMount() {
   }
 
   pressSignIn() {
-    this.props.navigation.navigate('Login');
+    this.props.navigation.navigate('Login')
   }
 
   render() {
@@ -57,7 +57,7 @@ class WelcomeScreen extends React.Component {
           </TouchableOpacity>
         </View>
       </ImageBackground>
-    );
+    )
 
   }
 
@@ -100,8 +100,8 @@ const styles = StyleSheet.create({
     width: normalize(20),
     height: normalize(20)
   }
-});
+})
 
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(WelcomeScreen);
+export default connect(mapStateToProps, mapDispatchToProps)(WelcomeScreen)

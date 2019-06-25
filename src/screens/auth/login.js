@@ -1,60 +1,60 @@
-import React from 'react';
-import { StyleSheet, Text, View, ImageBackground, TextInput, Image, TouchableOpacity, Dimensions, TouchableWithoutFeedback, Keyboard } from 'react-native';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-import normalize from '../../helpers/sizeHelper';
+import React from 'react'
+import { StyleSheet, Text, View, ImageBackground, TextInput, Image, TouchableOpacity, Dimensions, TouchableWithoutFeedback, Keyboard } from 'react-native'
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
+import normalize from '../../helpers/sizeHelper'
 import { Icon } from 'react-native-elements'
 
-import * as commonActions from '../../actions/common';
-import * as userActions from '../../actions/user';
+import * as commonActions from '../../actions/common'
+import * as userActions from '../../actions/user'
 
-const { height, width } = Dimensions.get('window');
+const { height, width } = Dimensions.get('window')
 
 
 const mapDispatchToProps = (dispatch) => {
-	return ({
+  return ({
     userActions: bindActionCreators({...userActions}, dispatch),
     commonActions: bindActionCreators({...commonActions}, dispatch)
-	});
+  })
 }
 
 const mapStateToProps = (state) => {
-	return ({
+  return ({
     authedUser: state.user.authedUser,
     loading: state.common.loading,
     label: state.common.label,
-	});
+  })
 }
 
 class Login extends React.Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       email: "",
       password: "",
       message: ""
     }
 
-    this.onChangeEmail = this.onChangeEmail.bind(this);
-    this.onPressSignin = this.onPressSignin.bind(this);
-    this.onChangePassword = this.onChangePassword.bind(this);
-    this.pressSignSignUp = this.pressSignSignUp.bind(this);
+    this.onChangeEmail = this.onChangeEmail.bind(this)
+    this.onPressSignin = this.onPressSignin.bind(this)
+    this.onChangePassword = this.onChangePassword.bind(this)
+    this.pressSignSignUp = this.pressSignSignUp.bind(this)
   }
 
   onChangeEmail(email) {
-    this.setState({ email: email });
+    this.setState({ email: email })
   }
 
   onChangePassword(password) {
-    this.setState({ password: password });
+    this.setState({ password: password })
   }
 
   onPressSignin() {
-    this.props.navigation.navigate('Dashboard');
+    this.props.navigation.navigate('Dashboard')
   }
 
   pressSignSignUp() {
-    this.props.navigation.navigate('SignUp');
+    this.props.navigation.navigate('SignUp')
   }
 
   render() {
@@ -113,7 +113,7 @@ class Login extends React.Component {
           </View>
         </View>
       </ImageBackground>
-    );
+    )
 
   }
 
@@ -204,8 +204,8 @@ const styles = StyleSheet.create({
     height: normalize(16),
     marginRight: 10
   }
-});
+})
 
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
+export default connect(mapStateToProps, mapDispatchToProps)(Login)

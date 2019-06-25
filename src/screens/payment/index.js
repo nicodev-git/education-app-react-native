@@ -1,31 +1,31 @@
-import React from 'react';
-import { StyleSheet, Text, View, ImageBackground, TextInput, Image, TouchableOpacity, Dimensions, TouchableWithoutFeedback, Keyboard, ScrollView } from 'react-native';
-import { Button } from 'react-native-elements';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-import normalize from '../../helpers/sizeHelper';
+import React from 'react'
+import { StyleSheet, Text, View, ImageBackground, TextInput, Image, TouchableOpacity, Dimensions, TouchableWithoutFeedback, Keyboard, ScrollView } from 'react-native'
+import { Button } from 'react-native-elements'
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
+import normalize from '../../helpers/sizeHelper'
 
-import Loading from '../loading';
+import Loading from '../loading'
 
-import * as commonActions from '../../actions/common';
-import * as userActions from '../../actions/user';
+import * as commonActions from '../../actions/common'
+import * as userActions from '../../actions/user'
 
-const { height, width } = Dimensions.get('window');
+const { height, width } = Dimensions.get('window')
 
 
 const mapDispatchToProps = (dispatch) => {
-	return ({
+  return ({
     userActions: bindActionCreators({...userActions}, dispatch),
     commonActions: bindActionCreators({...commonActions}, dispatch)
-	});
+  })
 }
 
 const mapStateToProps = (state) => {
-	return ({
+  return ({
     authedUser: state.user.authedUser,
     loading: state.common.loading,
     label: state.common.label,
-	});
+  })
 }
 
 
@@ -33,26 +33,26 @@ const mapStateToProps = (state) => {
 class Payment extends React.Component {
 
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       loading: false,
       label: 'Subscribing'
     }
 
-    this.onPressPay = this.onPressPay.bind(this);
-    this.closeLoading = this.closeLoading.bind(this);
+    this.onPressPay = this.onPressPay.bind(this)
+    this.closeLoading = this.closeLoading.bind(this)
   }
 
   onPressPay() {
-    this.setState({ loading: true });
+    this.setState({ loading: true })
     setTimeout(() => {
-      this.setState({ loading: false });
-      this.props.navigation.navigate('Grade');
-    }, 8000);
+      this.setState({ loading: false })
+      this.props.navigation.navigate('Grade')
+    }, 8000)
   }
 
   closeLoading() {
-    this.setState({ loading: false });
+    this.setState({ loading: false })
   }
 
 
@@ -71,7 +71,7 @@ class Payment extends React.Component {
         </View>
         <Loading show={this.state.loading} label={this.state.label} closeLoading={this.closeLoading}></Loading>
       </ImageBackground>
-    );
+    )
 
   }
 
@@ -127,8 +127,8 @@ const styles = StyleSheet.create({
     textAlign: 'center'
   },
   
-});
+})
 
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(Payment);
+export default connect(mapStateToProps, mapDispatchToProps)(Payment)

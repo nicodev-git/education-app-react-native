@@ -1,33 +1,33 @@
-import React from 'react';
-import { StyleSheet, Text, View, ImageBackground, TextInput, Image, TouchableOpacity, Dimensions, TouchableWithoutFeedback, Keyboard, ScrollView } from 'react-native';
-import { Button } from 'react-native-elements';
-import { AnimatedCircularProgress } from 'react-native-circular-progress';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-import normalize from '../../helpers/sizeHelper';
+import React from 'react'
+import { StyleSheet, Text, View, ImageBackground, TextInput, Image, TouchableOpacity, Dimensions, TouchableWithoutFeedback, Keyboard, ScrollView } from 'react-native'
+import { Button } from 'react-native-elements'
+import { AnimatedCircularProgress } from 'react-native-circular-progress'
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
+import normalize from '../../helpers/sizeHelper'
 
-import Footer from '../footer';
-import Header from '../header';
+import Footer from '../footer'
+import Header from '../header'
 
-import * as commonActions from '../../actions/common';
-import * as userActions from '../../actions/user';
+import * as commonActions from '../../actions/common'
+import * as userActions from '../../actions/user'
 
-const { height, width } = Dimensions.get('window');
+const { height, width } = Dimensions.get('window')
 
 
 const mapDispatchToProps = (dispatch) => {
-	return ({
+  return ({
     userActions: bindActionCreators({...userActions}, dispatch),
     commonActions: bindActionCreators({...commonActions}, dispatch)
-	});
+  })
 }
 
 const mapStateToProps = (state) => {
-	return ({
+  return ({
     authedUser: state.user.authedUser,
     loading: state.common.loading,
     label: state.common.label,
-	});
+  })
 }
 
 
@@ -35,7 +35,7 @@ const mapStateToProps = (state) => {
 class Profile extends React.Component {
 
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
     }
   }
@@ -133,7 +133,7 @@ class Profile extends React.Component {
 
       </ImageBackground>
 
-    );
+    )
 
   }
 
@@ -203,8 +203,8 @@ const styles = StyleSheet.create({
   
 
   
-});
+})
 
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(Profile);
+export default connect(mapStateToProps, mapDispatchToProps)(Profile)

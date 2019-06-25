@@ -1,29 +1,29 @@
-import React from 'react';
-import { StyleSheet, Text, View, ImageBackground, TextInput, Image, TouchableOpacity, Dimensions, TouchableWithoutFeedback, Keyboard, ScrollView } from 'react-native';
-import { Button } from 'react-native-elements';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-import normalize from '../../helpers/sizeHelper';
+import React from 'react'
+import { StyleSheet, Text, View, ImageBackground, TextInput, Image, TouchableOpacity, Dimensions, TouchableWithoutFeedback, Keyboard, ScrollView } from 'react-native'
+import { Button } from 'react-native-elements'
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
+import normalize from '../../helpers/sizeHelper'
 
-import * as commonActions from '../../actions/common';
-import * as userActions from '../../actions/user';
+import * as commonActions from '../../actions/common'
+import * as userActions from '../../actions/user'
 
-const { height, width } = Dimensions.get('window');
+const { height, width } = Dimensions.get('window')
 
 
 const mapDispatchToProps = (dispatch) => {
-	return ({
+  return ({
     userActions: bindActionCreators({...userActions}, dispatch),
     commonActions: bindActionCreators({...commonActions}, dispatch)
-	});
+  })
 }
 
 const mapStateToProps = (state) => {
-	return ({
+  return ({
     authedUser: state.user.authedUser,
     loading: state.common.loading,
     label: state.common.label,
-	});
+  })
 }
 
 
@@ -31,7 +31,7 @@ const mapStateToProps = (state) => {
 class GradeSelection extends React.Component {
 
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       grades: [
         {
@@ -68,37 +68,37 @@ class GradeSelection extends React.Component {
       ],
     }
 
-    this.createRateView = this.createRateView.bind(this);
-    this.goToPayment = this.goToPayment.bind(this);
+    this.createRateView = this.createRateView.bind(this)
+    this.goToPayment = this.goToPayment.bind(this)
   }
 
   createRateView(rate) {
     let data = []
     for (let i=0; i< rate; i+= 1) {
-      data.push(<Image key={`rate_star${i}`} style={styles.ratingImage} source={require('../../../assets/icons/star-fill-y.png')}></Image>);
+      data.push(<Image key={`rate_star${i}`} style={styles.ratingImage} source={require('../../../assets/icons/star-fill-y.png')}></Image>)
     }
     for (let i=0; i< 5 - rate; i+= 1) {
-      data.push(<Image key={`rate_star_n${i}`} style={styles.ratingImage} source={require('../../../assets/icons/star-outline-y.png')}></Image>);
+      data.push(<Image key={`rate_star_n${i}`} style={styles.ratingImage} source={require('../../../assets/icons/star-outline-y.png')}></Image>)
     }
-    return data;
+    return data
   }
 
   goToPayment() {
-    this.props.navigation.navigate('Payment');
+    this.props.navigation.navigate('Payment')
   }
 
 
   render() {
 
-    let tempList = [];
+    let tempList = []
     let groups = []
     this.state.grades.map(item => {
-      tempList.push(item);
+      tempList.push(item)
       if (tempList.length == 2) {
-        groups.push(tempList);
-        tempList = [];
+        groups.push(tempList)
+        tempList = []
       }
-    });
+    })
 
     return (
       <ImageBackground style={styles.homeImage} source={require('../../../assets/images/background.jpg')}>
@@ -144,7 +144,7 @@ class GradeSelection extends React.Component {
           </View>
         </View>
       </ImageBackground>
-    );
+    )
 
   }
 
@@ -251,8 +251,8 @@ const styles = StyleSheet.create({
     height: normalize(24)
   },
   
-});
+})
 
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(GradeSelection);
+export default connect(mapStateToProps, mapDispatchToProps)(GradeSelection)

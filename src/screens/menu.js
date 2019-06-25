@@ -1,17 +1,17 @@
-import React from 'react';
-import { StyleSheet, Text, View, ImageBackground, TextInput, Image, TouchableOpacity, Dimensions, TouchableWithoutFeedback, Keyboard } from 'react-native';
-import { Button } from 'react-native-elements';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-import normalize from '../helpers/sizeHelper';
-import * as Progress from 'react-native-progress';
+import React from 'react'
+import { StyleSheet, Text, View, ImageBackground, TextInput, Image, TouchableOpacity, Dimensions, TouchableWithoutFeedback, Keyboard } from 'react-native'
+import { Button } from 'react-native-elements'
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
+import normalize from '../helpers/sizeHelper'
+import * as Progress from 'react-native-progress'
 
-import Footer from './footer';
+import Footer from './footer'
 
-import * as commonActions from '../actions/common';
-import * as userActions from '../actions/user';
+import * as commonActions from '../actions/common'
+import * as userActions from '../actions/user'
 
-const { height, width } = Dimensions.get('window');
+const { height, width } = Dimensions.get('window')
 
 const menuList = [
   {
@@ -50,42 +50,42 @@ const menuList = [
     icon: require('../../assets/icons/settings.png'),
     params: {}
   }
-];
+]
 
 const mapDispatchToProps = (dispatch) => {
-	return ({
+  return ({
     userActions: bindActionCreators({...userActions}, dispatch),
     commonActions: bindActionCreators({...commonActions}, dispatch)
-	});
+  })
 }
 
 const mapStateToProps = (state) => {
-	return ({
+  return ({
     authedUser: state.user.authedUser,
     loading: state.common.loading,
     label: state.common.label,
-	});
+  })
 }
 
 
 
 class Menu extends React.Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
 
     }
 
-    this.handleClick = this.handleClick.bind(this);
-    this.signOut = this.signOut.bind(this);
+    this.handleClick = this.handleClick.bind(this)
+    this.signOut = this.signOut.bind(this)
   }
 
   handleClick(item) {
-    this.props.navigation.navigate(item.component, item.params);
+    this.props.navigation.navigate(item.component, item.params)
   }
 
   signOut() {
-    this.props.navigation.navigate('Login');
+    this.props.navigation.navigate('Login')
   }
 
   render() {
@@ -131,7 +131,7 @@ class Menu extends React.Component {
           </View> */}
         </View>
       </View>
-    );
+    )
 
   }
 
@@ -224,8 +224,8 @@ const styles = StyleSheet.create({
     height: normalize(20),
     marginRight: 10,
   }
-});
+})
 
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(Menu  );
+export default connect(mapStateToProps, mapDispatchToProps)(Menu)
